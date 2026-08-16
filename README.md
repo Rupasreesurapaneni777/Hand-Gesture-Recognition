@@ -54,4 +54,4 @@ Then we compare the model with a dictionary of Gestures defined in GestureAPI.py
 
 **Full explanation with screenshots is provided in /docs/Documentation.pdf**
 
-For any queries, contact: surapanenirupasree@gmail.com
+For any queries, contact: mahaveer.verma1@gmail.com
