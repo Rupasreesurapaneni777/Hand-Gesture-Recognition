@@ -1,57 +1,256 @@
-# HAND GESTURE RECOGNITION
+# ✋ Hand Gesture Recognition System
 
-### INTRODUCTION
-This project implements a hand recognition and hand gesture recognition system using OpenCV on Python 2.7. A histogram based approach is used to separate out a hand from the background image. Background cancellation techniques are used to obtain optimum results. The detected hand is then processed and modelled by finding contours and convex hull to recognize finger and palm positions and dimensions. Finally, a gesture object is created from the recognized pattern which is compared to a defined gesture dictionary.
+A real-time **Hand Gesture Recognition System** developed using **Python, OpenCV, Computer Vision, and Machine Learning** to detect and recognize different hand gestures through camera input.
 
-**Platform:** Python 2.7
+The system analyzes hand positions and identifies gestures such as **V**, **Index Pointing**, and **L Right** in real time.
 
-**Libraries:** OpenCV 2.4.8, Numpy
+---
 
-**Hardware Requirements:** Camera/Webcam
+## 📌 Project Overview
 
-### USAGE
+Hand Gesture Recognition is a Computer Vision project designed to recognize human hand gestures from live camera input.
 
-Run HandRecognition.py to begin the program.
+The application captures hand movements through a webcam, detects the hand region, extracts gesture-related features, and predicts the corresponding gesture.
 
-**Note for Windows users:**
-Remove this line from all .py files: '#!/usr/bin/python' or else you might get some error.
+This project demonstrates the practical use of **Computer Vision and Machine Learning for Human-Computer Interaction (HCI)**.
 
-You will find a window that shows your camera feed. Notice a rectangular frame on the right side of the window. That's the frame where all the detection and recognition works.
+---
 
-To begin, keep your hand and body outside the frame, so as to capture just the background environment, and press 'b'. This will capture the background and create a model of it. This model will be used to remove background from every frame captured once the program setup is complete. 
+## 🎯 Objective
 
-Now, you have to capture your hand histogram. Place your hand over the 9 small boxes in the frame so as to capture the maximum range of shades of your hand. Don't let any shadow or air gap show on the boxed areas for best results. Press 'c' to capture the hand and generate a histogram. 
+The main objectives of this project are:
 
-The setup is now complete. Now you will see, by keeping your hand inside the rectangular frame, it gets detected and you will notice a circle inside your palm area, with lines projecting out from it towards your fingers. Try moving your hands, hiding a few fingers or giving it one of the sample gestures implemented in the program.
+* Detect human hands using real-time camera input
+* Identify different hand gestures
+* Process live video frames
+* Extract important hand features
+* Classify hand gestures accurately
+* Display the detected gesture in real time
+* Demonstrate touchless human-computer interaction
 
-The sample gestures implemented are described with screenshots in the documentation. 
+---
 
-They are:
+## 🚀 Features
 
-1. "V" with your index and middle finger
+* Real-time hand detection
+* Live webcam processing
+* Gesture recognition
+* Hand region detection
+* Image preprocessing
+* Feature extraction
+* Gesture classification
+* Real-time prediction display
+* Simple and easy-to-understand output
 
-2. A flipped "L" with thumb and index finger
+---
 
-3. Pointing with your index finger in vertical position
+## 🛠️ Technologies Used
 
-**Note:** Press 'q' at any time to stop the program or 'r' to restart the program.
+* **Python**
+* **OpenCV**
+* **Computer Vision**
+* **Machine Learning**
+* **NumPy**
+* **Image Processing**
+* **VS Code / Jupyter Notebook**
 
-### HOW DOES IT WORK?
+---
 
-Read full documentation for detailed explanation about implementation in "docs" folder.
+## ⚙️ How the System Works
 
-During setup, first a background model is generated when the user presses 'b'. Then, a histogram is generated when the user provides his hand as a sample by pressing 'c'. When the setup is completed, the program goes into an infinite while loop which does as follows.
+The Hand Gesture Recognition System follows the workflow below:
 
-Camera input frame is saved to a numpy array. A mask is generated based on background model and applied on the frame. This removes background from the captured frame. Now the frame containing only the foreground is converted to HSV color space, followed by histogram comparison (generating back projection). This leaves us with the detected hand. Morphology and smoothening is applied to get a proper hand shape out of the frame. A threshold converts this into a binary image.
+```text
+Webcam Input
+     ↓
+Capture Video Frame
+     ↓
+Image Preprocessing
+     ↓
+Hand Detection
+     ↓
+Feature Extraction
+     ↓
+Gesture Classification
+     ↓
+Predicted Gesture
+     ↓
+Display Result
+```
 
-Next, we find contours of the binary image obtained, look for the largest contour and find its convex hull.
+### Step 1: Webcam Input
 
-Using points from the largest contour we determine center of the palm by finding the largest circle inscribed inside the contour and then the dimension of palm. Using the center of palm as reference, we eliminate all points from the convex hull which do not seem to be part of hand. Also, nearby convex hull points are eliminated so that we are left with exactly only those many points as the number of fingers stretched out.
+The system captures live video using the computer webcam.
 
-Using the positions of fingers and palm dimensions, we model our hand.
+### Step 2: Image Processing
 
-Then we compare the model with a dictionary of Gestures defined in GestureAPI.py to determine presence of gestures.
+Each frame captured from the webcam is processed using Computer Vision techniques.
 
-**Full explanation with screenshots is provided in /docs/Documentation.pdf**
+### Step 3: Hand Detection
 
-For any queries, contact: mahaveer.verma1@gmail.com
+The system identifies the hand region from the video frame.
+
+### Step 4: Feature Extraction
+
+Important features related to the hand position and finger arrangement are extracted.
+
+### Step 5: Gesture Classification
+
+The extracted features are analyzed to determine the corresponding hand gesture.
+
+### Step 6: Display Prediction
+
+The predicted gesture is displayed on the video output in real time.
+
+---
+
+## ✋ Recognized Gestures
+
+The current system demonstrates recognition of gestures including:
+
+| Gesture             | Prediction       |
+| ------------------- | ---------------- |
+| ✌️ Two Fingers      | `V`              |
+| ☝️ Index Finger     | `Index_Pointing` |
+| 👆 L-Shaped Gesture | `L_right`        |
+
+---
+
+## 📸 Project Output
+
+The following output demonstrates real-time recognition of different hand gestures.
+
+### Gesture Recognition Results
+
+![Hand Gesture Recognition Output](output/hand-gesture-output.png)
+
+The system successfully identifies:
+
+* **V Gesture**
+* **Index Pointing Gesture**
+* **L Right Gesture**
+
+The detected hand is highlighted using a bounding box, while the predicted gesture name is displayed on the output frame.
+
+---
+
+## 📂 Project Structure
+
+```text
+hand-gesture-recognition/
+│
+├── README.md
+├── hand_gesture_recognition.py
+├── requirements.txt
+│
+├── output/
+│   └── hand-gesture-output.png
+│
+├── dataset/
+│
+└── model/
+```
+
+> The exact structure may vary depending on the implementation and files used in the project.
+
+---
+
+## ▶️ How to Run the Project
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Rupasreesurapaneni777/Hand-Gesture-Recognition.git
+```
+
+### 2. Navigate to the Project Folder
+
+```bash
+cd Hand-Gesture-Recognition
+```
+
+### 3. Install Required Libraries
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the Application
+
+```bash
+python hand_gesture_recognition.py
+```
+
+The webcam will start and the application will begin detecting hand gestures.
+
+---
+
+## 💡 Applications
+
+Hand Gesture Recognition can be used in:
+
+* Human-Computer Interaction
+* Touchless Interfaces
+* Sign Language Recognition
+* Smart Home Control
+* Virtual Reality
+* Gaming
+* Accessibility Applications
+* Robot Control
+* Gesture-Based Navigation
+
+---
+
+## 📈 Skills Demonstrated
+
+Through this project, I gained practical experience with:
+
+* Python programming
+* OpenCV
+* Computer Vision
+* Machine Learning
+* Image preprocessing
+* Real-time video processing
+* Feature extraction
+* Gesture classification
+* Webcam integration
+* Debugging and testing
+
+---
+
+## 🔮 Future Improvements
+
+Future enhancements can include:
+
+* Recognizing more hand gestures
+* Supporting both left and right hands
+* Improving recognition accuracy
+* Supporting dynamic hand gestures
+* Recognizing complete sign-language alphabets
+* Converting gestures into text
+* Adding voice output
+* Improving recognition under different lighting conditions
+* Deploying the application with a user-friendly interface
+
+---
+
+## 👩‍💻 Author
+
+**Surapaneni Rupa Sree**
+
+AI & Data Science Graduate interested in:
+
+* Data Analytics
+* Python
+* SQL
+* Machine Learning
+* Computer Vision
+* Power BI
+
+---
+
+## ⭐ Support
+
+If you find this project useful, consider giving the repository a **Star ⭐**.
+
+Thank you for visiting my project!
